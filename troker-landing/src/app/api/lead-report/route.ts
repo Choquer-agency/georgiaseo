@@ -2,12 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 import { Resend } from "resend";
 
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL!,
-  token: process.env.KV_REST_API_TOKEN!,
-});
-
-const resend = new Resend(process.env.RESEND_API_KEY!);
+export const dynamic = "force-dynamic";
 
 interface Lead {
   websiteSource: string;
@@ -19,6 +14,12 @@ interface Lead {
 }
 
 export async function GET(request: NextRequest) {
+  const redis = new Redis({
+    url: process.env.KV_REST_API_URL!,
+    token: process.env.KV_REST_API_TOKEN!,
+  });
+
+  const resend = new Resend(process.env.RESEND_API_KEY!);
   // Verify cron secret
   const authHeader = request.headers.get("authorization");
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
