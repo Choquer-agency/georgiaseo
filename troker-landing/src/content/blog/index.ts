@@ -39,7 +39,7 @@ export const authors: Record<string, AuthorProfile> = {
   bryce: {
     name: "Bryce Choquer",
     role: "Founder & Lead Developer",
-    bio: "Bryce has 8 years of experience building high-performance websites with Webflow. He has delivered 150+ projects across 50+ industries and is a certified Webflow Expert Partner.",
+    bio: "Bryce Choquer is the founder of FuturLabs, an AI software agency that builds custom platforms to replace SaaS subscriptions. He has led 40+ custom software projects across healthcare, construction, e-commerce, and professional services, helping mid-market companies eliminate over $2M in combined annual SaaS spend.",
     image: "/images/authors/bryce.jpg",
     socials: {
       linkedin: "https://linkedin.com/in/brycechoquer",
@@ -78,7 +78,7 @@ async function parsePost(filePath: string): Promise<BlogPost> {
     date: data.date,
     modifiedDate: data.modifiedDate || data.date,
     region: data.region,
-    category: data.category || "webflow",
+    category: data.category || "AI Development",
     tags: data.tags || [],
     featuredImage: data.featuredImage,
     readingTime: getReadingTime(content),

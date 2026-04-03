@@ -6,15 +6,13 @@ import { ContactFormModal } from "@/components/ContactForm";
 
 interface ClientLayoutProps {
   children: ReactNode;
-  domain: string;
-  region: string;
 }
 
-export function ClientLayout({ children, domain, region }: ClientLayoutProps) {
+export function ClientLayout({ children }: ClientLayoutProps) {
   return (
     <ContactFormProvider>
       {children}
-      <ContactFormModal domain={domain} region={region} />
+      <ContactFormModal />
     </ContactFormProvider>
   );
 }

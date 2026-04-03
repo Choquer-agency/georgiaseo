@@ -2,196 +2,173 @@
 
 import Link from "next/link";
 import { useContactForm } from "@/context/ContactFormContext";
+import { AGENCY_NAME } from "@/lib/siteConfig";
+import { trackCtaClick } from "@/lib/analytics";
+import { LinkedinIcon, TwitterIcon } from "lucide-react";
 
-const footerTags = [
-  { label: "On-Page SEO", color: "#d8e3fd" },
-  { label: "Technical SEO", color: "#fff1c6" },
-  { label: "Local SEO", color: "#ffe5cd" },
-  { label: "Link Building", color: "#d8e3fd" },
-  { label: "Content Strategy", color: "#d5ffcd" },
-  { label: "Google Business Profile", color: "#e6d8fd" },
-  { label: "SEO Reporting", color: "#fdd8f4" },
-  { label: "Keyword Research", color: "#fdd8d9" },
-  { label: "Conversion Optimization", color: "#d1fffd" },
-  { label: "Competitor Analysis", color: "#fff1c6" },
+const services = [
+  { title: "Custom CRM", href: "/services/custom-crm" },
+  { title: "Custom ERP", href: "/services/custom-erp" },
+  { title: "AI Agents", href: "/services/ai-agents" },
+  { title: "Workflow Automation", href: "/services/workflow-automation" },
+  { title: "BI & Analytics", href: "/services/bi-analytics" },
+  { title: "Legacy Modernization", href: "/services/legacy-modernization" },
 ];
 
-export function Footer({ brandName }: { brandName: string }) {
+const company = [
+  { title: "About", href: "/about" },
+  { title: "Case Studies", href: "/work" },
+  { title: "Blog", href: "/blog" },
+  { title: "Contact", href: "/contact" },
+  { title: "FAQ", href: "/#faq" },
+];
+
+const socialLinks = [
+  { icon: <LinkedinIcon className="size-4" />, link: "#" },
+  { icon: <TwitterIcon className="size-4" />, link: "#" },
+];
+
+export function Footer() {
   const { openModal } = useContactForm();
+  const year = new Date().getFullYear();
 
   return (
-    <footer
-      style={{
-        background: "linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 50%, #FFCC80 100%)",
-        color: "#0c0c0c",
-      }}
-    >
+    <footer style={{ backgroundColor: "#193133", color: "#ffffff" }}>
       {/* Big CTA section */}
       <div className="section-space-large">
         <div className="u-container text-center">
           <p className="font-mono text-fluid-small uppercase tracking-wider opacity-60 mb-6">
-            Ready to get started?
+            Free SaaS Replacement Assessment
           </p>
-          <p className="font-sans font-medium text-fluid-h1 leading-[1.05] max-w-[16ch] mx-auto mb-8">
-            Let&apos;s get you to page 1.
+          <p className="font-sans font-medium text-fluid-h1 leading-[1.05] max-w-[18ch] mx-auto mb-4">
+            Ready to own your software?
+          </p>
+          <p className="font-sans text-fluid-main opacity-50 max-w-[44ch] mx-auto mb-8">
+            Find out how much you could save by replacing your SaaS subscriptions with custom software you own.
           </p>
           <button
-            onClick={() => openModal()}
-            className="inline-flex items-center gap-3 bg-brand text-dark rounded-sm px-8 py-4 font-sans font-medium text-fluid-main transition-all hover:brightness-110"
-            style={{ transitionDuration: "0.3s" }}
+            onClick={() => { trackCtaClick("footer_cta", "Get Your Free Audit"); openModal(undefined, "footer_cta"); }}
+            className="inline-flex items-center gap-3 rounded-sm px-8 py-4 font-sans font-medium text-fluid-main transition-all hover:brightness-110"
+            style={{ transitionDuration: "0.3s", background: "#D0FF71", color: "#193133" }}
           >
-            Get a Free SEO Audit
+            Get Your Free Audit
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M2 14L14 2M14 2H5M14 2V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 14L14 2M14 2H5M14 2V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
           <p className="font-sans text-fluid-small opacity-40 mt-6">
-            We take on a limited number of clients each month.
+            We take on a limited number of clients each quarter.
           </p>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t" style={{ borderColor: "rgba(0,0,0,0.15)" }}>
-        <div className="u-container py-8">
-          {/* Tag cloud */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {footerTags.map((tag) => (
-              <span
-                key={tag.label}
-                className="font-mono text-xs md:text-xs px-4 py-2 md:px-3 md:py-1.5 rounded-full"
-                style={{ backgroundColor: tag.color, color: "#0c0c0c" }}
-              >
-                {tag.label}
+      {/* Minimal footer bar */}
+      <div className="relative">
+        <div
+          className="mx-auto max-w-5xl md:border-x"
+          style={{
+            borderColor: "rgba(255,255,255,0.08)",
+            background: "radial-gradient(35% 80% at 30% 0%, rgba(208,255,113,0.08), transparent)",
+          }}
+        >
+          {/* Top divider */}
+          <div className="absolute inset-x-0 h-px w-full" style={{ backgroundColor: "rgba(255,255,255,0.08)" }} />
+
+          <div className="grid max-w-5xl grid-cols-6 gap-6 p-6 md:p-8">
+            {/* Logo + description + social */}
+            <div className="col-span-6 flex flex-col gap-5 md:col-span-3">
+              <span className="flex items-center gap-2.5 opacity-60">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/logo.svg"
+                  alt={AGENCY_NAME}
+                  className="h-[1.125rem] w-auto brightness-0 invert"
+                />
+                <span className="font-display text-xl tracking-tight leading-none">
+                  {AGENCY_NAME}
+                </span>
               </span>
-            ))}
-          </div>
+              <p className="font-mono text-sm opacity-40 max-w-sm text-balance">
+                We build AI-powered custom software that replaces your expensive SaaS subscriptions. You own the code.
+              </p>
+              <div className="flex gap-2">
+                {socialLinks.map((item, i) => (
+                  <a
+                    key={i}
+                    className="rounded-md border p-1.5 opacity-40 hover:opacity-100 transition-opacity"
+                    style={{ borderColor: "rgba(255,255,255,0.15)" }}
+                    target="_blank"
+                    href={item.link}
+                  >
+                    {item.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
 
-          {/* Footer links */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-wider opacity-40 mb-3">
-                SEO Services
-              </p>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/services/local-seo" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Local SEO
+            {/* Services column */}
+            <div className="col-span-3 w-full md:col-span-1">
+              <span className="font-mono text-xs uppercase tracking-wider opacity-30 mb-2 block">
+                Services
+              </span>
+              <div className="flex flex-col gap-1">
+                {services.map(({ href, title }, i) => (
+                  <Link
+                    key={i}
+                    className="w-max py-1 text-sm opacity-50 hover:opacity-100 transition-opacity duration-200"
+                    href={href}
+                  >
+                    {title}
                   </Link>
-                </li>
-                <li>
-                  <Link href="/services/technical-seo" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Technical SEO
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/content-marketing" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Content Marketing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/link-building" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Link Building
-                  </Link>
-                </li>
-              </ul>
+                ))}
+              </div>
             </div>
-            <div>
-              <p className="font-mono text-xs uppercase tracking-wider opacity-40 mb-3">
-                Industries
-              </p>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/industries/healthcare" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Healthcare SEO
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/industries/home-services" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Home Services SEO
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/industries/legal" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Law Firm SEO
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/industries/real-estate" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Real Estate SEO
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-mono text-xs uppercase tracking-wider opacity-40 mb-3">
-                Resources
-              </p>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/blog" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <a href="/#portfolio" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Case Studies
-                  </a>
-                </li>
-                <li>
-                  <a href="/#faq" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <Link href="/tools/seo-roi-calculator" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    SEO ROI Calculator
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-mono text-xs uppercase tracking-wider opacity-40 mb-3">
+
+            {/* Company column */}
+            <div className="col-span-3 w-full md:col-span-1">
+              <span className="font-mono text-xs uppercase tracking-wider opacity-30 mb-2 block">
                 Company
-              </p>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/about" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    About Us
+              </span>
+              <div className="flex flex-col gap-1">
+                {company.map(({ href, title }, i) => (
+                  <Link
+                    key={i}
+                    className="w-max py-1 text-sm opacity-50 hover:opacity-100 transition-opacity duration-200"
+                    href={href}
+                  >
+                    {title}
                   </Link>
-                </li>
-                <li>
-                  <a href="/#process" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Our Process
-                  </a>
-                </li>
-                <li>
-                  <a href="/#pricing" className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity" style={{ transitionDuration: "0.2s" }}>
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <button onClick={() => openModal()} className="font-sans text-sm opacity-60 hover:opacity-100 transition-opacity text-left" style={{ transitionDuration: "0.2s" }}>
-                    Contact Us
-                  </button>
-                </li>
-              </ul>
+                ))}
+              </div>
+            </div>
+
+            {/* Get Started column */}
+            <div className="col-span-6 w-full md:col-span-1">
+              <span className="font-mono text-xs uppercase tracking-wider opacity-30 mb-2 block">
+                Get Started
+              </span>
+              <div className="flex flex-col gap-1">
+                <button
+                  onClick={() => { trackCtaClick("footer_links", "Book a Discovery Call"); openModal(undefined, "footer_links"); }}
+                  className="w-max py-1 text-sm opacity-50 hover:opacity-100 transition-opacity duration-200 text-left"
+                >
+                  Book a Discovery Call
+                </button>
+                <Link
+                  href="/contact"
+                  className="w-max py-1 text-sm opacity-50 hover:opacity-100 transition-opacity duration-200"
+                >
+                  Free SaaS Audit
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Copyright */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <span className="font-sans font-medium text-base flex items-center gap-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/logo.svg"
-                alt={brandName}
-                className="h-5 w-auto"
-              />
-              {brandName}
-            </span>
-            <p className="font-sans text-fluid-small opacity-40">
-              &copy; {new Date().getFullYear()} {brandName}. All rights reserved.
+          {/* Bottom divider + copyright */}
+          <div className="absolute inset-x-0 h-px w-full" style={{ backgroundColor: "rgba(255,255,255,0.08)" }} />
+          <div className="flex max-w-5xl flex-col justify-between gap-2 pt-3 pb-6 px-6 md:px-8">
+            <p className="text-center font-mono text-xs opacity-30">
+              &copy; {year} {AGENCY_NAME}. All rights reserved.
             </p>
           </div>
         </div>

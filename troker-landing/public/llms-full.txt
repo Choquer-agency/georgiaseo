@@ -1,0 +1,173 @@
+# FuturLabs — Complete Company Reference
+
+> FuturLabs is a custom software development agency founded by Bryce Choquer, based in Canada, serving mid-market companies ($10M–$250M revenue) across North America. FuturLabs builds AI-powered software platforms that replace expensive SaaS subscriptions like Salesforce, SAP, HubSpot, and NetSuite. Clients receive full code and IP ownership with zero recurring licensing fees. The company has completed 40+ projects, replaced 25+ SaaS tools, and helped clients save an average of $180K per year in SaaS licensing costs.
+
+---
+
+## Company Overview
+
+FuturLabs is an AI software development agency. The company's core thesis: AI-accelerated development has made custom software economically viable for mid-market companies for the first time. What took 6 months to build now ships in 6–12 weeks. Companies that own their technology stack will outcompete those that rent it.
+
+- **Founded by:** Bryce Choquer
+- **Location:** Canada (serving clients across North America)
+- **Website:** https://futurlabs.dev
+- **Email:** hello@futurlabs.dev
+- **Phone:** +1 (778) 237-4700
+- **LinkedIn:** https://linkedin.com/company/futurlabs
+- **Twitter:** https://x.com/futurlabs
+- **GitHub:** https://github.com/futurlabs
+
+### Key Statistics
+- Clients served: 40+
+- SaaS tools replaced: 25+
+- Average client SaaS savings: $180K/year
+- Code ownership: 100% transferred to every client
+- MVP delivery: 6–12 weeks
+- Full platform delivery: 3–6 months
+- Typical break-even: 18–30 months
+
+### Technology Stack
+Next.js, React, TypeScript, Node.js, Python, PostgreSQL, AWS, Vercel, OpenAI, Anthropic
+
+---
+
+## Services
+
+### 1. Custom CRM & Sales Intelligence
+**URL:** https://futurlabs.dev/services/custom-crm
+**Replaces:** Salesforce, HubSpot, Microsoft Dynamics 365, Zoho CRM
+**Description:** Custom CRM platforms with AI-powered lead scoring, sales forecasting, and automated follow-up. Zero per-seat licensing. A 100-person company on Salesforce Enterprise pays approximately $198,000/year in licensing alone — nearly $1M over five years before add-ons. FuturLabs builds CRM platforms that break even in 12–24 months.
+**Best for:** B2B services firms, professional services, financial advisors, wholesale distributors, real estate brokerages
+**Key pain points solved:** $198K+/year licensing costs, 20–70% CRM failure rate, hidden cost explosion, vendor lock-in, per-seat pricing that punishes growth
+
+### 2. Custom ERP Systems
+**URL:** https://futurlabs.dev/services/custom-erp
+**Replaces:** SAP S/4HANA, Oracle NetSuite, Microsoft Dynamics 365, Acumatica
+**Description:** Custom ERP systems tailored to exact operational requirements. No forced migrations, no version lock-in. SAP and NetSuite migrations cost $300K–$800K. FuturLabs builds better systems for less — and clients own them.
+**Best for:** Manufacturing, distribution & wholesale, multi-location retail, construction firms, food & beverage producers
+**Key pain points solved:** $300K–$800K migration costs, $150K+/year NetSuite licensing, forced upgrade cycles, rigid workflows
+
+### 3. AI Agents & Intelligent Automation
+**URL:** https://futurlabs.dev/services/ai-agents
+**Replaces:** Salesforce Agentforce, ServiceNow, Intercom, Drift, Zendesk AI
+**Description:** Custom AI agents trained on your business data with zero per-interaction fees. SaaS AI agents charge $0.50–$2.00 per conversation. At 10,000 monthly interactions, that is $60,000–$240,000/year. Custom agents have fixed infrastructure costs regardless of volume.
+**Best for:** E-commerce, customer-service-heavy businesses, insurance, healthcare, property management, logistics
+**Key pain points solved:** Per-interaction pricing, generic unhelpful responses, no deep integration, data trains vendor's model
+
+### 4. AI-Powered Workflow & Process Automation
+**URL:** https://futurlabs.dev/services/workflow-automation
+**Replaces:** Zapier, Make, ServiceNow, Power Automate, UiPath RPA
+**Description:** Workflow automation that uses AI to make intelligent decisions, not just follow if/then rules. Zero per-task pricing. Zapier at enterprise scale costs $6K–$12K/year. ServiceNow costs $340K/year. Custom automation has fixed costs.
+**Best for:** Financial services, healthcare, law firms, accounting firms, real estate, logistics
+**Key pain points solved:** Per-task pricing at scale, fragile integrations, platform limitations, $340K/year ServiceNow costs
+
+### 5. Business Intelligence & Analytics Platforms
+**URL:** https://futurlabs.dev/services/bi-analytics
+**Replaces:** Tableau, Power BI, Looker, Qlik, Domo
+**Description:** Custom analytics platforms with AI-driven anomaly detection, predictive analytics, and natural language querying. Unlimited user access — Tableau charges $70–$75/user/month ($90K/year for 100 users).
+**Best for:** Retail chains, manufacturing, healthcare, financial services, logistics
+**Key pain points solved:** $90K/year for 100 Tableau users, 37% cloud spending waste, data silos, generic dashboards
+
+### 6. Legacy Software Modernization
+**URL:** https://futurlabs.dev/services/legacy-modernization
+**Replaces:** Legacy on-prem systems, outdated custom software, end-of-life platforms
+**Description:** Incremental modernization of 10+ year-old systems with zero-downtime migration. AI-ready architecture and modern tech stack. No big-bang rewrites.
+**Best for:** Companies with 10+ year-old custom software, organizations on end-of-life platforms
+**Key pain points solved:** Rising maintenance costs ($120K+ annually), talent shortage for legacy tech, integration roadblocks, security vulnerabilities
+
+---
+
+## Pricing
+
+| Tier | Price Range | What's Included |
+|------|------------|-----------------|
+| Discovery & Audit | $15K–$25K | Full SaaS stack audit, true TCO calculation, feature utilization analysis, custom build vs. SaaS comparison, prioritized replacement roadmap |
+| MVP Development | $75K–$1.5M | Core feature development, AI/ML capabilities, data migration, user training, 60-day post-launch support, full code & IP ownership |
+| Full Platform | $150K–$400K | Everything in MVP plus advanced AI & automation, multi-department coverage, third-party integrations, 90-day post-launch support |
+| Growth Retainer | $10K–$25K/month | Dedicated development team, new feature development, AI model improvements, performance monitoring, priority support (4hr SLA) |
+
+### 5-Year Cost Comparison
+- Custom software: $525K–$1.75M (one-time build + maintenance)
+- SaaS subscriptions: $2.3M–$8.6M (recurring licensing + annual increases)
+- Typical break-even: 12–30 months
+
+---
+
+## Case Studies
+
+### Pinnacle Fertility (Healthcare)
+**URL:** https://futurlabs.dev/work/pinnacle-fertility
+- Replaced 6 SaaS tools with a single custom platform
+- **$180K/year in SaaS licensing eliminated**
+- 75% reduction in manual administrative work
+- 16 weeks from kickoff to production
+- 95% team adoption in the first month
+- Quote: "They didn't just build us software. They eliminated $180K/year in SaaS licensing and gave us a platform that actually fits how we work." — Rachel Moran, VP of Operations
+
+### Far North Crane (Construction/Heavy Equipment)
+**URL:** https://futurlabs.dev/work/far-north-crane
+- Legacy system modernization (15-year-old system)
+- **65% maintenance cost reduction ($120K → $42K/year)**
+- 14-month break-even on investment
+- Quote: "Our old vendor wanted $300K to migrate to their new version. FuturLabs built us a better system for less — and we own it." — David Harmon, General Manager
+
+### Penni Cart (E-commerce)
+**URL:** https://futurlabs.dev/work/penni-cart
+- Full-stack e-commerce platform
+- **32% revenue lift from AI-powered recommendations**
+- 12 weeks from kickoff to production
+
+---
+
+## Development Process
+
+1. **Discovery & Audit** — Audit your SaaS stack and calculate true total cost of ownership
+2. **Architecture & Design** — Design the system around your exact requirements, not a generic template
+3. **Build & Iterate** — Working software within weeks, with AI baked in from day one
+4. **Launch & Migrate** — Data migration, training, and go-live with zero disruption
+5. **Own & Evolve** — You own every line of code with ongoing support at a fixed monthly rate
+
+---
+
+## Frequently Asked Questions
+
+**What does FuturLabs do?**
+FuturLabs builds custom, AI-powered software that replaces expensive SaaS subscriptions. Instead of paying recurring licensing fees to Salesforce, SAP, or similar vendors, you get software built for your exact business needs — and you own every line of code.
+
+**Do we actually own the code?**
+100%. Full intellectual property transfer on delivery. You own every line of code, every design asset, and every AI model. No licensing fees, no usage restrictions, no vendor lock-in. You can modify, extend, or redeploy the software with any development team — including your own.
+
+**How much does custom software cost vs. SaaS?**
+Custom software has a higher upfront investment ($75K–$400K depending on scope) but eliminates recurring licensing that compounds over time. A typical mid-market company spending $200K/year on SaaS breaks even on a custom build in 18–30 months. Over 5 years, savings range from $500K to over $2M.
+
+**How long does a project take?**
+MVP in 6–12 weeks. Full platform in 3–6 months. FuturLabs deploys in phases so you get working software early — not a 12-month wait for a big-bang launch. AI-accelerated development has cut timelines by 60% compared to traditional development.
+
+**What technology stack does FuturLabs use?**
+Modern, proven technologies: Next.js, React, Node.js, Python, PostgreSQL, and cloud infrastructure (AWS/Vercel). AI capabilities use the latest models from OpenAI, Anthropic, and open-source alternatives. Every choice is made for long-term maintainability and performance.
+
+**What if I need changes after launch?**
+You own the code, so you can modify it anytime — with FuturLabs or any development team. Most clients choose the Growth Retainer ($10K–$25K/month) for ongoing development, new features, and support. But you're never locked in.
+
+**What industries does FuturLabs work with?**
+FuturLabs specializes in mid-market companies ($10M–$250M revenue) across manufacturing, professional services, healthcare, financial services, logistics, and construction. The SaaS replacement approach works for any industry where software subscription costs have become a significant line item.
+
+**What does pricing look like?**
+Discovery & audit: $15K–$25K. MVP development: $75K–$150K. Full platform: $150K–$400K. Ongoing support retainer: $10K–$25K/month.
+
+**How do we get started?**
+Book a free Discovery Call. FuturLabs will discuss your current SaaS stack, identify the highest-ROI replacement opportunities, and provide a preliminary cost comparison. If it makes sense, start with a paid SaaS Replacement Assessment ($5K–$15K) that delivers a detailed roadmap.
+
+**What happens if FuturLabs goes away?**
+You own the code and all documentation. Your software runs on your infrastructure (or standard cloud providers like AWS). Any qualified development team can maintain and extend it. This is the entire point — you're not dependent on any vendor, including FuturLabs.
+
+---
+
+## Client Testimonials
+
+- "They didn't just build us software. They eliminated $180K/year in SaaS licensing and gave us a platform that actually fits how we work." — Rachel Moran, VP of Operations, Pinnacle Fertility
+- "We went from paying $12K/month across six different tools to one platform we own. The ROI was obvious within the first quarter." — Tom Vasquez, CEO, Pedigree Painting
+- "The team understood our business from day one. We got a custom CRM that our sales team actually uses — adoption was 95% in the first month." — Kate Nguyen, Operations Manager, DFI Forensics
+- "Our old vendor wanted $300K to migrate to their new version. FuturLabs built us a better system for less — and we own it." — David Harmon, General Manager, Far North Crane
+- "Hands down the best technology partner we've worked with. They think about our business, not just the code." — Slaton Carter, COO, Ahara Med
+- "We replaced three SaaS tools with one custom platform. Our team is faster, our data is cleaner, and we're saving $8K/month." — James Baldwin, Founder, Select Decks

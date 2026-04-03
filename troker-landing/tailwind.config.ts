@@ -9,9 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: "#ff9500",
-        dark: "#0c0c0c",
-        "bg-dark": "#1a1a1a",
+        brand: "#004D43",
+        "brand-neon": "#27EAA6",
+        "brand-accent": "#8F93FF",
+        "brand-medium": "#004D43",
+        dark: "#193133",
+        "bg-dark": "#193133",
+        mint: "#EBFFF6",
         light: "#ffffff",
         grey: "#f8f8f8",
         "grey-1": "#b7b7b7",
@@ -26,6 +30,25 @@ const config: Config = {
         "bg-red": "#ff6d6d",
         "bg-teal": "#77dcd8",
         "bg-brown": "#d9d586",
+        // shadcn tokens
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+        popover: { DEFAULT: "hsl(var(--popover))", foreground: "hsl(var(--popover-foreground))" },
+        primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
+        secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
+        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+        accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
+        destructive: { DEFAULT: "hsl(var(--destructive))", foreground: "hsl(var(--destructive-foreground))" },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+      },
+      borderColor: {
+        DEFAULT: "hsl(var(--border))",
+      },
+      ringOffsetColor: {
+        background: "hsl(var(--background))",
       },
       fontFamily: {
         sans: ["var(--font-neue-montreal)", "Arial", "sans-serif"],

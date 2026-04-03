@@ -1,0 +1,63 @@
+# FuturLabs
+
+> FuturLabs is a custom software development agency that builds AI-powered platforms to replace expensive SaaS subscriptions. Founded by Bryce Choquer and based in Canada, FuturLabs serves mid-market companies ($10M–$250M revenue) across North America. The company delivers full code and IP ownership to clients — zero recurring licensing fees.
+
+## What FuturLabs Does
+
+FuturLabs builds custom software that replaces enterprise SaaS tools like Salesforce, SAP, HubSpot, NetSuite, and others. Using AI-accelerated development, the company delivers production-ready MVPs in 6–12 weeks and full platforms in 3–6 months. Clients typically break even on their investment in 18–30 months and save $500K–$2M+ over 5 years compared to continued SaaS licensing.
+
+## Core Services
+
+- [Custom CRM & Sales Intelligence](https://futurlabs.dev/services/custom-crm): Replaces Salesforce, HubSpot, Dynamics 365. Zero per-seat licensing, AI-powered sales tools, complete data ownership.
+- [Custom ERP Systems](https://futurlabs.dev/services/custom-erp): Replaces SAP, NetSuite, Dynamics 365. Tailored operations management with no forced migrations.
+- [AI Agents & Intelligent Automation](https://futurlabs.dev/services/ai-agents): Custom AI agents trained on your business data. Zero per-interaction fees. Deep system integration.
+- [Workflow & Process Automation](https://futurlabs.dev/services/workflow-automation): Replaces Zapier, Make, ServiceNow. No per-task pricing, unlimited complexity.
+- [Business Intelligence & Analytics](https://futurlabs.dev/services/bi-analytics): Replaces Tableau, Power BI, Looker. Unlimited user access, AI-powered insights.
+- [Legacy Software Modernization](https://futurlabs.dev/services/legacy-modernization): Incremental modernization of 10+ year-old systems with zero downtime.
+
+## Key Facts
+
+- Founder: Bryce Choquer
+- Location: Canada (serving clients across North America)
+- Clients served: 40+
+- Average client SaaS savings: $180K/year
+- SaaS tools replaced: 25+
+- Code ownership: 100% transferred to client
+- Tech stack: Next.js, React, Node.js, Python, PostgreSQL, AWS, OpenAI, Anthropic
+- Pricing: $15K–$25K discovery, $75K–$400K+ development, $10K–$25K/month retainer
+
+## Case Studies
+
+- [Pinnacle Fertility](https://futurlabs.dev/work/pinnacle-fertility): Replaced 6 SaaS tools, saving $180K/year. 75% reduction in manual work. 16 weeks to production.
+- [Far North Crane](https://futurlabs.dev/work/far-north-crane): Legacy system modernization. 65% maintenance cost reduction ($120K → $42K/year). 14-month break-even.
+- [Penni Cart](https://futurlabs.dev/work/penni-cart): Full-stack e-commerce platform. 32% revenue lift from AI recommendations. 12 weeks to production.
+
+## Comparison Pages
+
+- [Salesforce Alternatives for Mid-Market](https://futurlabs.dev/compare/alternatives-to-salesforce-custom-crm): Custom CRM vs Salesforce, HubSpot, Zoho with 5-year TCO analysis
+- [HubSpot CRM Alternatives](https://futurlabs.dev/compare/alternatives-to-hubspot-crm-mid-market): Why mid-market companies outgrow HubSpot and what to do about it
+- [SAP Alternatives for Mid-Market](https://futurlabs.dev/compare/alternatives-to-sap-erp-mid-market): Custom ERP vs SAP S/4HANA, NetSuite, Acumatica comparison
+- [NetSuite Alternatives](https://futurlabs.dev/compare/alternatives-to-oracle-netsuite-erp): Custom ERP vs Oracle NetSuite for growing companies
+- [Zapier Alternatives for Enterprise](https://futurlabs.dev/compare/alternatives-to-zapier-enterprise-automation): Custom workflow automation vs Zapier, Make, Power Automate
+- [Tableau Alternatives](https://futurlabs.dev/compare/alternatives-to-tableau-custom-analytics): Custom BI dashboards vs Tableau, Power BI, Looker
+- [Salesforce Agentforce Alternatives](https://futurlabs.dev/compare/alternatives-to-salesforce-agentforce-ai): Custom AI agents vs Agentforce, ServiceNow, Intercom
+- [Intercom Alternatives](https://futurlabs.dev/compare/alternatives-to-intercom-ai-customer-support): Custom AI support agents vs Intercom Fin, Zendesk AI
+- [Custom CRM vs Salesforce TCO](https://futurlabs.dev/compare/custom-crm-vs-salesforce-total-cost): Detailed 5-year total cost of ownership comparison
+- [Custom ERP vs NetSuite](https://futurlabs.dev/compare/custom-erp-vs-netsuite-build-or-buy): Build vs buy analysis for mid-market ERP
+- [Custom Software vs SaaS](https://futurlabs.dev/compare/custom-software-vs-saas-total-cost): Complete 5-year cost comparison across all categories
+- [Custom AI Agents vs ServiceNow](https://futurlabs.dev/compare/custom-ai-agents-vs-servicenow-automation): Enterprise automation build vs buy analysis
+
+## Pages
+
+- [Homepage](https://futurlabs.dev/)
+- [About](https://futurlabs.dev/about)
+- [Services](https://futurlabs.dev/services)
+- [Case Studies](https://futurlabs.dev/work)
+- [Blog](https://futurlabs.dev/blog)
+- [Contact](https://futurlabs.dev/contact)
+
+## Contact
+
+- Email: hello@futurlabs.dev
+- Phone: +1 (778) 237-4700
+- LinkedIn: https://linkedin.com/company/futurlabs

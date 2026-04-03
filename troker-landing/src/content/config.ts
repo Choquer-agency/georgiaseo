@@ -1,86 +1,71 @@
-export interface DomainConfig {
+export interface ServicePillar {
   slug: string;
-  domain: string;
-  region: string;
-  regionAdjective: string;
-  country: "US";
-
-  // Domain type
-  domainType: "location";
-  targetIndustry?: string;
-
-  // Branding
-  brandName: string;
-
-  // SEO
-  metaTitle: string;
-  metaDescription: string;
-  ogImage?: string;
-
-  // Copy
+  title: string;
+  shortTitle: string;
+  description: string;
+  icon: string;
+  color: string;
+  replaces: string[];
   heroH1: string;
   heroSubhead: string;
+  problemHeading: string;
+  problemSubhead: string;
+  painPoints: { title: string; description: string }[];
+  benefits: { title: string; description: string }[];
+  processSteps: ProcessStep[];
+  faqs: FAQItem[];
+  bestFitCompanies: string[];
+  metaTitle: string;
+  metaDescription: string;
+  tier: 1 | 2;
+}
 
-  // Location details
-  locality: string;
-  stateCode: string;
-  nearbyAreas: string;
-
-  // Schema.org
-  schemaAddress?: {
-    locality: string;
-    region: string;
-    country: string;
+export interface CaseStudy {
+  slug: string;
+  client: string;
+  industry: string;
+  logo?: string;
+  image?: string;
+  color: string;
+  saasReplaced: string;
+  headline: string;
+  summary: string;
+  challenge: string;
+  solution: string;
+  techStack: string[];
+  metrics: {
+    label: string;
+    value: string;
+    description?: string;
+  }[];
+  testimonial?: {
+    quote: string;
+    name: string;
+    title: string;
   };
-
-  // Contact
-  telephone?: string;
-  email?: string;
-
-  // Geo
-  geoCoordinates?: {
-    latitude: number;
-    longitude: number;
-  };
-
-  geoRegionCode?: string;
-
-  // Google Tag Manager
-  gtmId?: string;
-
-  // Optional per-region accent override
-  accentColor?: string;
-
-  // Market cluster for differentiated content
-  cluster?: string;
+  metaTitle: string;
+  metaDescription: string;
 }
 
 export interface FAQItem {
   question: string;
   answer: string;
-  category: "seo" | "pricing" | "process" | "local" | "general";
+  category: "general" | "pricing" | "process" | "technical" | "ownership";
 }
 
-export interface SEOService {
-  slug: string;
+export interface ProcessStep {
+  step: number;
   title: string;
   description: string;
-  longDescription: string;
-  icon: string;
 }
 
-export interface ComparisonRow {
-  feature: string;
-  professionalSEO: string | boolean;
-  diySEO: string | boolean;
-  noSEO: string | boolean;
-}
-
-export interface IndustryItem {
+export interface Testimonial {
+  quote: string;
   name: string;
-  icon: string;
-  description: string;
+  title: string;
+  company: string;
   color: string;
+  featured?: boolean;
 }
 
 export interface PricingTier {
@@ -90,69 +75,20 @@ export interface PricingTier {
   includes: string[];
   color: string;
   featured?: boolean;
+  retainer?: boolean;
 }
 
-export interface Testimonial {
-  quote: string;
+export interface ComparisonRow {
+  feature: string;
+  custom: string | boolean;
+  saas: string | boolean;
+}
+
+export interface IndustryVertical {
+  slug: string;
   name: string;
-  title: string;
-  company: string;
-  avatar?: string;
-  featured?: boolean;
-}
-
-export interface PortfolioProject {
-  name: string;
-  category: string;
-  image: string;
-  url?: string;
-  description?: string;
-  caseStudy?: {
-    challenge: string;
-    approach: string;
-    result: string;
-  };
-}
-
-export interface ServiceItem {
   icon: string;
-  title: string;
   description: string;
+  color: string;
+  relevantPillars: string[];
 }
-
-export interface ProcessStep {
-  step: number;
-  title: string;
-  description: string;
-}
-
-export const defaultConfig: DomainConfig = {
-  slug: "georgia-seo",
-  domain: "georgiaseoexperts.com",
-  region: "Georgia",
-  regionAdjective: "Georgia-based",
-  country: "US",
-  domainType: "location",
-  brandName: "Georgia SEO Experts",
-  metaTitle: "Georgia SEO Experts | Atlanta SEO Agency & Services",
-  metaDescription:
-    "Atlanta SEO agency helping Georgia businesses rank higher on Google. Data-driven SEO strategies that deliver measurable traffic and revenue growth. Free SEO audit.",
-  locality: "Atlanta",
-  stateCode: "GA",
-  nearbyAreas: "Marietta, Roswell, Alpharetta, Decatur, and Savannah",
-  heroH1: "Georgia's #1 SEO Agency",
-  heroSubhead:
-    "Data-driven SEO strategies that put your business on page 1 of Google, drive qualified traffic, and turn searchers into customers.",
-  schemaAddress: {
-    locality: "Atlanta",
-    region: "GA",
-    country: "US",
-  },
-  telephone: "+17782374700",
-  email: "bryce@choquer.agency",
-  geoCoordinates: {
-    latitude: 33.749,
-    longitude: -84.388,
-  },
-  geoRegionCode: "US-GA",
-};

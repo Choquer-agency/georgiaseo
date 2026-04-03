@@ -8,6 +8,28 @@
     --duration-default: 0.6s;
     --duration-half: 0.3s;
     --duration-double: 1.2s;
+
+    /* shadcn color tokens */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
+    --primary: 82 100% 72%;
+    --primary-foreground: 168 30% 15%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 155 85% 87%;
+    --accent-foreground: 168 30% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 82 100% 72%;
+    --radius: 0.5rem;
   }
 
   * {
@@ -26,8 +48,8 @@
   }
 
   ::selection {
-    background-color: #ff9500;
-    color: #0c0c0c;
+    background-color: #D0FF71;
+    color: #193133;
   }
 
   h1, h2, h3, h4, h5, h6, p, blockquote, label {
@@ -104,8 +126,8 @@
 
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-3 rounded-sm font-sans font-medium;
-    background: #ff9500;
-    color: #fff;
+    background: #D0FF71;
+    color: #193133;
     padding: 0.75rem 1.5rem;
     transition: background var(--duration-half) var(--cubic-default);
   }
@@ -123,14 +145,17 @@
     transition: background var(--duration-half) var(--cubic-default);
   }
 
-  /* Eyebrow text */
+  /* Eyebrow text — highlighter effect */
   .eyebrow {
-    @apply font-mono text-fluid-small uppercase tracking-wider;
+    @apply font-mono text-fluid-small uppercase tracking-wider inline-block;
+    background-color: hsl(82 100% 72%);
+    padding: 0.25em 0.6em;
+    border-radius: 2px;
   }
 
   /* Section spacing */
   .section-space-hero {
-    padding-top: clamp(8rem, 10vw, 12rem);
+    padding-top: clamp(2rem, 3vw, 3rem);
     padding-bottom: clamp(4rem, 6vw, 8rem);
   }
 

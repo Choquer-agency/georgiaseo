@@ -3,71 +3,20 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap-register";
+import { useContactForm } from "@/context/ContactFormContext";
+import { trackCtaClick } from "@/lib/analytics";
 
-const featureColors = ["#F79C42", "#71CFA3", "#BCEFFF"];
+const featureColors = ["#D0FF71", "#27EAA6", "#8F93FF"];
 
 const features = [
-  {
-    num: "01",
-    label: "Web Development",
-    icon: (
-      <svg viewBox="0 0 48 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-auto">
-        <rect x="0" y="47.9922" width="15.9996" height="15.9996" transform="rotate(-90 0 47.9922)" fill="currentColor"/>
-        <rect x="15.9961" y="63.9961" width="15.9996" height="15.9996" transform="rotate(-90 15.9961 63.9961)" fill="currentColor"/>
-        <rect x="15.9961" y="31.9961" width="15.9996" height="15.9996" transform="rotate(-90 15.9961 31.9961)" fill="currentColor"/>
-        <rect x="31.9922" y="80" width="15.9996" height="15.9996" transform="rotate(-90 31.9922 80)" fill="currentColor"/>
-        <rect x="31.9922" y="16" width="15.9996" height="15.9996" transform="rotate(-90 31.9922 16)" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    num: "02",
-    label: "SEO Optimization",
-    icon: (
-      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-auto">
-        <rect x="47.9883" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="15.9961" y="15.9961" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="47.9883" y="15.9961" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="31.9922" y="31.9922" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="31.9922" y="47.9961" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect y="63.9922" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="15.9961" y="63.9922" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="31.9922" y="63.9922" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="47.9883" y="63.9922" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="64" y="63.9922" width="15.9996" height="15.9996" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    num: "03",
-    label: "AI Automation",
-    icon: (
-      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-auto">
-        <rect width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="48.0039" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="32.0078" y="16.0039" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="48.0039" y="16.0039" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="64" y="16.0039" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="15.9961" y="32" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="48.0039" y="32" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect y="47.9961" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="15.9961" y="47.9961" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="32.0078" y="47.9961" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="15.9961" y="64" width="15.9996" height="15.9996" fill="currentColor"/>
-        <rect x="64" y="64" width="15.9996" height="15.9996" fill="currentColor"/>
-      </svg>
-    ),
-  },
+  { num: "01", label: "Custom Software" },
+  { num: "02", label: "AI-Powered" },
+  { num: "03", label: "You Own It" },
 ];
 
-interface HeroProps {
-  h1: string;
-  subhead: string;
-  region: string;
-}
-
-export function Hero({ h1, subhead, region }: HeroProps) {
+export function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const { openModal } = useContactForm();
 
   useGSAP(
     () => {
@@ -86,6 +35,7 @@ export function Hero({ h1, subhead, region }: HeroProps) {
             { y: 40, opacity: 0, duration: 0.7, stagger: 0.12 },
             "-=0.4"
           )
+          .from(".hero-cta", { y: 20, opacity: 0, duration: 0.6 }, "-=0.3")
           .from(".hero-partners", { y: 20, opacity: 0, duration: 0.6 }, "-=0.3");
       });
     },
@@ -93,44 +43,80 @@ export function Hero({ h1, subhead, region }: HeroProps) {
   );
 
   return (
-    <header ref={ref} className="section-space-hero" style={{ backgroundColor: "#FFF9F0" }}>
+    <header ref={ref} className="section-space-hero" style={{ backgroundColor: "transparent" }}>
       <div className="u-container">
         <div className="max-w-[85rem] mx-auto">
-          {/* Eyebrow with Webflow logo */}
+          {/* Eyebrow */}
           <div className="hero-heading flex items-center gap-2.5 mb-6">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/logos/webflow.svg"
-              alt="Webflow"
-              className="h-4 w-auto"
-            />
             <span className="font-mono text-xs uppercase tracking-wider text-brand">
-              Certified Webflow Agency
+              AI Software Agency
             </span>
           </div>
 
           {/* Main heading */}
-          <h1 className="hero-heading font-sans font-medium text-fluid-h1 leading-[1.1] tracking-tight text-dark max-w-[14ch] mb-6">
-            {h1}
+          <h1 className="hero-heading font-sans font-medium text-fluid-h1 leading-[1.1] tracking-tight text-dark max-w-[16ch] mb-6">
+            Stop Renting Software.{" "}
+            <span className="text-brand">Start Owning It.</span>
           </h1>
 
-          {/* Body text — ~80% of H1 width */}
-          <p className="hero-body font-sans text-fluid-large text-dark opacity-60 max-w-[42ch] mb-6 leading-relaxed">
-            {subhead}
+          {/* Subhead */}
+          <p className="hero-body font-sans text-fluid-large text-dark opacity-60 max-w-[48ch] mb-6 leading-relaxed">
+            We build AI-powered custom software that replaces your expensive SaaS
+            subscriptions. You own the code. Zero recurring licensing fees. Break
+            even in 2–3 years, save millions over 5.
           </p>
 
           {/* Qualifier */}
-          <p className="hero-body font-sans text-fluid-main text-dark opacity-40 max-w-[50ch] mb-16 leading-relaxed">
-            Built for growing businesses in {region} ready to invest in a Webflow website that drives real results.
+          <p className="hero-body font-sans text-fluid-main text-dark opacity-40 max-w-[50ch] mb-10 leading-relaxed">
+            For mid-market companies ($10M–$250M) ready to stop paying rent on
+            software and start owning their technology.
           </p>
 
-          {/* Feature items row with SVG icons */}
+          {/* CTA */}
+          <div className="hero-cta flex flex-col sm:flex-row gap-4 mb-16">
+            <button
+              onClick={() => { trackCtaClick("hero", "Get a Free SaaS Audit"); openModal(undefined, "hero"); }}
+              className="btn-secondary text-base px-8 py-4"
+            >
+              Get a Free SaaS Audit
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M2 14L14 2M14 2H5M14 2V11"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <a
+              href="#how-it-works"
+              onClick={() => trackCtaClick("hero", "See How It Works")}
+              className="btn text-base"
+            >
+              <span>See How It Works</span>
+              <span className="btn-arrow">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path
+                    d="M7 1V13M7 13L1 7M7 13L13 7"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          {/* Feature items */}
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 mb-16">
             {features.map((feat, i) => (
               <div key={feat.num} className="hero-feature flex items-center gap-5">
-                <div className="h-6 flex-shrink-0" style={{ color: featureColors[i] }}>
-                  {feat.icon}
-                </div>
+                <div
+                  className="w-2 h-2 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: featureColors[i] }}
+                />
                 <div>
                   <span className="font-mono text-xs text-grey-1 uppercase tracking-wider">
                     [{feat.num}]
@@ -141,28 +127,6 @@ export function Hero({ h1, subhead, region }: HeroProps) {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Partners line */}
-          <div className="hero-partners flex items-center gap-4 pt-8 border-t" style={{ borderColor: "#ffca94" }}>
-            <p className="font-sans text-fluid-main text-dark opacity-40">
-              Helped over 100 businesses globally
-            </p>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="opacity-40"
-            >
-              <path
-                d="M12 5V19M12 19L5 12M12 19L19 12"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
           </div>
         </div>
       </div>

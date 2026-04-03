@@ -1,101 +1,89 @@
-import { DomainConfig } from "@/content/config";
-import { getExpandedFaqs } from "@/content/shared";
-import { processSteps, seoServices } from "@/content/shared";
+import { siteConfig, SITE_URL, AGENCY_NAME, CONTACT_EMAIL, PHONE } from "@/lib/siteConfig";
+import { faqs, processSteps } from "@/content/shared";
+import { getTier1Services } from "@/content/services";
 
-function getDomainRating(domain: string): { ratingValue: string; ratingCount: string; reviewCount: string } {
-  let hash = 0;
-  for (let i = 0; i < domain.length; i++) {
-    hash = ((hash << 5) - hash) + domain.charCodeAt(i);
-    hash |= 0;
-  }
-  const seed = Math.abs(hash);
-  const ratingValue = (4.7 + (seed % 3) * 0.1).toFixed(1);
-  const ratingCount = String(38 + (seed % 21));
-  return { ratingValue, ratingCount, reviewCount: ratingCount };
-}
-
-export function generateSchema(config: DomainConfig) {
-  const domain = `https://${config.domain}`;
-  const locality = config.locality;
-  const region = config.region;
-  const expandedFaqs = getExpandedFaqs(locality, region, config.slug);
+export function generateSchema() {
+  const services = getTier1Services();
 
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["LocalBusiness", "ProfessionalService"],
-        "@id": `${domain}/#business`,
-        name: config.brandName,
-        description: config.metaDescription,
-        url: domain,
-        ...(config.telephone && { telephone: config.telephone }),
-        ...(config.email && { email: config.email }),
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": `${SITE_URL}/#business`,
+        name: AGENCY_NAME,
+        description: siteConfig.description,
+        url: SITE_URL,
+        telephone: PHONE,
+        email: CONTACT_EMAIL,
+        founder: { "@id": `${SITE_URL}/#founder` },
         areaServed: [
-          { "@type": "City", name: locality },
-          { "@type": "State", name: region },
+          { "@type": "Country", name: "Canada" },
+          { "@type": "Country", name: "United States" },
         ],
-        ...(config.schemaAddress && {
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: config.schemaAddress.locality,
-            addressRegion: config.schemaAddress.region,
-            addressCountry: config.schemaAddress.country,
-          },
-        }),
-        ...(config.geoCoordinates && {
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: config.geoCoordinates.latitude,
-            longitude: config.geoCoordinates.longitude,
-          },
-        }),
-        priceRange: "$1,500 - $10,000+/mo",
-        serviceType: [
-          "Search Engine Optimization",
-          "Local SEO",
-          "Technical SEO",
-          "Content Marketing",
-          "Link Building",
-          "SEO Reporting & Analytics",
-        ],
+        priceRange: "$15,000 - $400,000+",
+        serviceType: services.map((s) => s.title),
         knowsAbout: [
-          "Search Engine Optimization",
-          "Local SEO",
-          "Google Business Profile",
-          "Content Strategy",
-          "Link Building",
-          "Technical SEO",
-          "Conversion Rate Optimization",
+          "Custom Software Development",
+          "AI Agent Development",
+          "AI Development Agency",
+          "SaaS Replacement",
+          "CRM Development",
+          "ERP Development",
+          "Business Process Automation",
+          "Workflow Automation",
+          "Business Intelligence",
+          "Legacy System Modernization",
+        ],
+        sameAs: [
+          siteConfig.social.linkedin,
+          siteConfig.social.twitter,
+          siteConfig.social.github,
         ],
       },
 
       {
-        "@type": "WebPage",
-        "@id": `${domain}/#webpage`,
-        url: domain,
-        name: config.metaTitle,
-        description: config.metaDescription,
-        isPartOf: { "@id": `${domain}/#website` },
-        about: { "@id": `${domain}/#business` },
-        speakable: {
-          "@type": "SpeakableSpecification",
-          cssSelector: ["#hero h1", "#hero p", "#why-seo h2", "#faq"],
-        },
+        "@type": "Person",
+        "@id": `${SITE_URL}/#founder`,
+        name: siteConfig.founder,
+        jobTitle: "Founder & CEO",
+        url: `${SITE_URL}/about`,
+        worksFor: { "@id": `${SITE_URL}/#business` },
+        knowsAbout: [
+          "AI Software Development",
+          "Custom Software Architecture",
+          "SaaS Replacement Strategy",
+          "AI Agent Development",
+          "Enterprise Software",
+          "Mid-Market Technology",
+        ],
+        sameAs: [
+          "https://linkedin.com/in/brycechoquer",
+        ],
       },
 
       {
         "@type": "WebSite",
-        "@id": `${domain}/#website`,
-        url: domain,
-        name: config.brandName,
-        publisher: { "@id": `${domain}/#business` },
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: AGENCY_NAME,
+        publisher: { "@id": `${SITE_URL}/#business` },
+      },
+
+      {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/#webpage`,
+        url: SITE_URL,
+        name: `${AGENCY_NAME} | AI-Powered Custom Software That Replaces SaaS`,
+        description: siteConfig.description,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@id": `${SITE_URL}/#business` },
       },
 
       {
         "@type": "FAQPage",
-        "@id": `${domain}/#faq`,
-        mainEntity: expandedFaqs.map((faq) => ({
+        "@id": `${SITE_URL}/#faq`,
+        mainEntity: faqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,
           acceptedAnswer: {
@@ -107,9 +95,8 @@ export function generateSchema(config: DomainConfig) {
 
       {
         "@type": "HowTo",
-        name: "Our SEO Process",
-        description:
-          `Our five-step process for driving organic traffic and leads for ${region} businesses.`,
+        name: "Our Custom Software Development Process",
+        description: "Our five-step process for replacing SaaS with custom software you own.",
         step: processSteps.map((s) => ({
           "@type": "HowToStep",
           position: s.step,
@@ -118,24 +105,26 @@ export function generateSchema(config: DomainConfig) {
         })),
       },
 
-      (() => {
-        const rating = getDomainRating(config.domain);
-        return {
-          "@type": "AggregateRating",
-          itemReviewed: { "@id": `${domain}/#business` },
-          ratingValue: rating.ratingValue,
-          bestRating: "5",
-          ratingCount: rating.ratingCount,
-          reviewCount: rating.reviewCount,
-        };
-      })(),
-
-      ...seoServices.map((service) => ({
+      ...services.map((service) => ({
         "@type": "Service",
         serviceType: service.title,
+        name: service.title,
         description: service.description,
-        provider: { "@id": `${domain}/#business` },
-        areaServed: { "@type": "State", name: region },
+        url: `${SITE_URL}/services/${service.slug}`,
+        provider: { "@id": `${SITE_URL}/#business` },
+        areaServed: [
+          { "@type": "Country", name: "Canada" },
+          { "@type": "Country", name: "United States" },
+        ],
+        audience: {
+          "@type": "BusinessAudience",
+          audienceType: "Mid-market companies ($10M–$250M revenue)",
+        },
+        offers: {
+          "@type": "Offer",
+          description: `Custom ${service.shortTitle} development — replaces ${service.replaces.join(", ")}`,
+          priceCurrency: "USD",
+        },
       })),
 
       {
@@ -145,7 +134,7 @@ export function generateSchema(config: DomainConfig) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: domain,
+            item: SITE_URL,
           },
         ],
       },

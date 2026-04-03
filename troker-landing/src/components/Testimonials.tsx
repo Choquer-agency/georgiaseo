@@ -4,60 +4,10 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap-register";
 import { useContactForm } from "@/context/ContactFormContext";
+import { testimonials } from "@/content/shared";
+import { trackCtaClick } from "@/lib/analytics";
 
-interface TestimonialCard {
-  quote: string;
-  name: string;
-  company: string;
-  color: string;
-}
-
-const generalTestimonials: TestimonialCard[] = [
-  {
-    quote: "They didn't just optimize our website. They built us a lead machine. We went from 2 inbound leads a month to 40 in the first 90 days.",
-    name: "Rachel Moran",
-    company: "Pinnacle Fertility",
-    color: "#F79C42",
-  },
-  {
-    quote: "The team understood our goals from day one. The SEO strategy they delivered exceeded every expectation — more traffic, more leads, more revenue.",
-    name: "Tom Vasquez",
-    company: "Pedigree Painting",
-    color: "#FFDF40",
-  },
-  {
-    quote: "We've worked with five agencies before. None of them came close. The attention to detail and speed of results were unmatched.",
-    name: "Kate Nguyen",
-    company: "DFI Forensics",
-    color: "#DEDA8D",
-  },
-  {
-    quote: "Our old website was invisible on Google. They gave us page 1 rankings and traffic that's up 200% and counting.",
-    name: "David Harmon",
-    company: "Far North Crane",
-    color: "#BCEFFF",
-  },
-  {
-    quote: "Hands down the best SEO agency I've ever worked with. Incredibly responsive and proactive.",
-    name: "Slaton Carter",
-    company: "Ahara Med",
-    color: "#71CFA3",
-  },
-  {
-    quote: "My experience has been top notch. They understand what we want and deliver beyond expectations every single time.",
-    name: "James Baldwin",
-    company: "Select Decks",
-    color: "#C4EF7A",
-  },
-];
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function getTestimonialsForSlug(_slug: string): TestimonialCard[] {
-  return generalTestimonials;
-}
-
-export function Testimonials({ slug }: { slug?: string; locality?: string }) {
-  const testimonials = getTestimonialsForSlug(slug || "");
+export function Testimonials() {
   const { openModal } = useContactForm();
   const ref = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -72,14 +22,6 @@ export function Testimonials({ slug }: { slug?: string; locality?: string }) {
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: { trigger: ref.current, start: "top 75%", once: true },
-        });
-        gsap.from(".ct-card", {
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: ref.current, start: "top 60%", once: true },
         });
       });
     },
@@ -96,10 +38,10 @@ export function Testimonials({ slug }: { slug?: string; locality?: string }) {
   }
 
   return (
-    <section ref={ref} className="py-16 md:py-20 theme-grey">
+    <section ref={ref} className="py-16 md:py-20" style={{ backgroundColor: "#ffffff" }}>
       <div className="u-container">
         <div className="flex items-end justify-between mb-12">
-          <h2 className="ct-heading font-sans font-medium text-fluid-h2 leading-[1.1] text-dark max-w-[12ch]">
+          <h2 className="ct-heading font-sans font-medium text-fluid-h2 leading-[1.1] text-dark max-w-[14ch]">
             They say it better than we do
           </h2>
           <div className="hidden md:flex items-center gap-3">
@@ -108,14 +50,18 @@ export function Testimonials({ slug }: { slug?: string; locality?: string }) {
               className="w-12 h-12 rounded-full border border-dark-faded flex items-center justify-center hover:bg-dark hover:text-light transition-colors"
               style={{ transitionDuration: "0.3s" }}
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 2L4 8L10 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 2L4 8L10 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </button>
             <button
               onClick={() => scrollCards("right")}
               className="w-12 h-12 rounded-full border border-dark-faded flex items-center justify-center hover:bg-dark hover:text-light transition-colors"
               style={{ transitionDuration: "0.3s" }}
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2L12 8L6 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 2L12 8L6 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </button>
           </div>
         </div>
@@ -142,7 +88,9 @@ export function Testimonials({ slug }: { slug?: string; locality?: string }) {
                 </div>
                 <div>
                   <p className="font-sans font-medium text-sm text-dark">{t.name}</p>
-                  <p className="font-sans text-xs text-dark opacity-60">{t.company}</p>
+                  <p className="font-sans text-xs text-dark opacity-60">
+                    {t.title}, {t.company}
+                  </p>
                 </div>
               </div>
             </div>
@@ -151,13 +99,13 @@ export function Testimonials({ slug }: { slug?: string; locality?: string }) {
 
         <div className="mt-12 text-center">
           <button
-            onClick={() => openModal()}
-            className="inline-flex items-center gap-3 bg-brand text-dark rounded-sm px-8 py-4 font-sans font-medium text-fluid-main transition-all hover:brightness-110"
+            onClick={() => { trackCtaClick("testimonials", "Book a Discovery Call"); openModal(undefined, "testimonials"); }}
+            className="inline-flex items-center gap-3 bg-brand text-light rounded-sm px-8 py-4 font-sans font-medium text-fluid-main transition-all hover:brightness-110"
             style={{ transitionDuration: "0.3s" }}
           >
-            Get a Free SEO Audit
+            Book a Discovery Call
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M2 14L14 2M14 2H5M14 2V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 14L14 2M14 2H5M14 2V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>

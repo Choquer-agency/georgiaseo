@@ -1,82 +1,80 @@
 import { MetadataRoute } from "next";
-import { headers } from "next/headers";
-import { domainMap } from "@/content/domains";
-import { defaultConfig } from "@/content/config";
-import { getAllServiceSlugs } from "@/content/services";
-import { getAllIndustrySlugs } from "@/content/industries";
-import blogManifest from "@/content/blog/manifest.json";
-
-export const dynamic = "force-dynamic";
+import { SITE_URL } from "@/lib/siteConfig";
+import { getTier1Services } from "@/content/services";
+import { getAllCaseStudySlugs } from "@/content/case-studies";
+import { getAllBlogPosts } from "@/content/blog";
+import { getAllComparisonSlugs } from "@/content/comparisons";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Resolve domain from host header
-  const headersList = headers();
-  const host = headersList.get("host") || "";
-  const hostname = host.replace(/:\d+$/, "").replace(/^www\./, "");
-  const config = domainMap[hostname] || defaultConfig;
-  const domain = config.domain;
+  const serviceSlugs = getTier1Services().map((s) => s.slug);
+  const caseStudySlugs = getAllCaseStudySlugs();
+  const blogPosts = await getAllBlogPosts();
+  const comparisonSlugs = getAllComparisonSlugs();
 
-  const posts = blogManifest.filter((p) => p.region === config.region);
-  const serviceSlugs = getAllServiceSlugs();
+  const serviceEntries: MetadataRoute.Sitemap = serviceSlugs.map((slug) => ({
+    url: `${SITE_URL}/services/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
 
-  const blogEntries: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `https://${domain}/blog/${post.slug}`,
-    lastModified: new Date(post.modifiedDate),
-    changeFrequency: "monthly",
+  const caseStudyEntries: MetadataRoute.Sitemap = caseStudySlugs.map((slug) => ({
+    url: `${SITE_URL}/work/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
-  const industrySlugs = getAllIndustrySlugs();
-
-  const serviceEntries: MetadataRoute.Sitemap = serviceSlugs.map((slug) => ({
-    url: `https://${domain}/services/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-  }));
-
-  const industryEntries: MetadataRoute.Sitemap = industrySlugs.map((slug) => ({
-    url: `https://${domain}/industries/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-  }));
-
-  const toolsEntries: MetadataRoute.Sitemap = [
-    {
-      url: `https://${domain}/tools/seo-roi-calculator`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-  ];
-
   return [
     {
-      url: `https://${domain}`,
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
-      url: `https://${domain}/about`,
+      url: `${SITE_URL}/services`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...serviceEntries,
+    {
+      url: `${SITE_URL}/work`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...caseStudyEntries,
+    {
+      url: `${SITE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    ...serviceEntries,
-    ...industryEntries,
-    ...toolsEntries,
-    ...(posts.length > 0
-      ? [
-          {
-            url: `https://${domain}/blog`,
-            lastModified: new Date(),
-            changeFrequency: "weekly" as const,
-            priority: 0.9,
-          },
-          ...blogEntries,
-        ]
-      : []),
+    {
+      url: `${SITE_URL}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...comparisonSlugs.map((slug) => ({
+      url: `${SITE_URL}/compare/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
+    ...blogPosts.map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: new Date(post.modifiedDate),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
   ];
 }

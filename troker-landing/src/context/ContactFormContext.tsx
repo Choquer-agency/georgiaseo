@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import { trackFormOpen } from "@/lib/analytics";
 
 export interface PackageInfo {
   packageName: string;
@@ -12,7 +13,7 @@ export interface PackageInfo {
 
 interface ContactFormContextValue {
   isOpen: boolean;
-  openModal: (packageInfo?: PackageInfo) => void;
+  openModal: (packageInfo?: PackageInfo, source?: string) => void;
   closeModal: () => void;
   packageInfo: PackageInfo | null;
 }
@@ -28,7 +29,8 @@ export function ContactFormProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [packageInfo, setPackageInfo] = useState<PackageInfo | null>(null);
 
-  const openModal = useCallback((info?: PackageInfo) => {
+  const openModal = useCallback((info?: PackageInfo, source?: string) => {
+    trackFormOpen(source, info ? { packageName: info.packageName, estimatedTotal: info.estimatedTotal } : undefined);
     setPackageInfo(info || null);
     setIsOpen(true);
   }, []);
